@@ -5,26 +5,24 @@ import Summary from "./Summary.jsx"
 
 export default function Quiz() {
     const [usersAnswers, setUsersAnswers] = useState([])
-
     //this willnow be update only from question.jsx once we show the users if their answer is correct or not basically once handleSelectAnswer() is called from Question.jsx
     const activeQuestionIndex = usersAnswers.length
     const quizIsComplete = activeQuestionIndex === QUESTIONS.length
 
-    const handleSelectAnswer = useCallback(function handleSelectAnswer(selectedAnswer) {
-        setUsersAnswers((prevUserAnswer) => {
-            return [...prevUserAnswer, selectedAnswer]
-        })
-
-    }, [])
+    const handleSelectAnswer = useCallback(
+        function handleSelectAnswer(selectedAnswer) {
+            setUsersAnswers((prevUserAnswer) => {
+                return [...prevUserAnswer, selectedAnswer]
+            })
+        }, []);
 
     const handleSkipQuestion = useCallback(
         () => handleSelectAnswer(null),
-        [handleSelectAnswer])
+        [handleSelectAnswer]);
 
     if (quizIsComplete) {
         return <Summary usersAnswers={usersAnswers} />
     }
-
 
     //it is very important to add key . Here in QuestionTimer if we do not add key ,and when question changes since there is no change in QuestionTimer
     //it will not be re-rendered . Hence progres bar would show nothing.With key in place there is some change in there and QuestionTimer would re-render
@@ -36,6 +34,5 @@ export default function Quiz() {
                 onSelectAnswer={handleSelectAnswer}
                 onSkipAnswer={handleSkipQuestion} />
         </div>
-
     )
 }

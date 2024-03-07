@@ -13,7 +13,7 @@ export default function Questions({
         iscorrect: null
     })
 
-    //Resting the timer. reson is mentiond at the bottom
+    //Resting the timer. reason is mentiond at the bottom
     let timer = 10000;
     if (answer.selectedAnswer) {
         timer = 1000 // right or wrong answer would be highlighted after 1 s
