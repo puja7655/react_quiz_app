@@ -1,8 +1,7 @@
 import { useCallback, useState } from "react"
 import QUESTIONS from '../questions.js'
 import quizCompleteImg from '../assets/quiz-complete.png'
-import QuestionTimer from '../components/QuestioonTimer.jsx'
-import Answers from "./Answers.jsx"
+import Questions from "./Questions.jsx"
 
 export default function Quiz() {
     const [usersAnswers, setUsersAnswers] = useState([])
@@ -52,20 +51,14 @@ export default function Quiz() {
     //it will not be re-rendered . Hence progres bar would show nothing.With key in place there is some change in there and QuestionTimer would re-render
     return (
         <div id="quiz">
-            <QuestionTimer
-                timeout={10000}
+            <Questions
                 key={activeQuestionIndex}
-                onTimeout={handleSkipQuestion}
-            />
-            <div id="question">
-                <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-                <Answers 
-                key={activeQuestionIndex}
-                answers={QUESTIONS[activeQuestionIndex].answers} 
-                selectedAnswer={usersAnswers[usersAnswers.length - 1]} 
+                questionText={QUESTIONS[activeQuestionIndex].text}
+                answers={QUESTIONS[activeQuestionIndex].answers}
+                onSelectAnswer={handleSelectAnswer}
+                selectedAnswer={usersAnswers[usersAnswers.length - 1]}
                 answerState={answerState}
-                onSelect={handleSelectAnswer}/>
-            </div>
+                onSkipAnswer={handleSkipQuestion} />
         </div>
 
     )
