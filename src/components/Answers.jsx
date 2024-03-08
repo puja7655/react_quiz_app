@@ -2,7 +2,7 @@ import { useRef } from "react";
 
 export default function Answers({ answers, selectedAnswer, answerState, onSelect }) {
 
-    const shuffledAnswers = useRef() //here useRef is used so that its value do not change which each re-render
+    const shuffledAnswers = useRef() //here useRef is used so that its value do not change with each re-render
 
     if (!shuffledAnswers.current) {
         shuffledAnswers.current = [...answers]
