@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+//Try to minimize the use of useEffect
 export default function QuestionTimer({ timeout, onTimeout, mode }) {
     const [remainingTime, setRemainingTIme] = useState(timeout)
 
