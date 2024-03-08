@@ -2,11 +2,11 @@ import { useRef } from "react";
 
 export default function Answers({ answers, selectedAnswer, answerState, onSelect }) {
 
-    const shuffledAnswers = useRef()
+    const shuffledAnswers = useRef() //here useRef is used so that its value do not change which each re-render
 
     if (!shuffledAnswers.current) {
         shuffledAnswers.current = [...answers]
-        shuffledAnswers.current.sort(() => Math.random - 0.5) //if sort function returns negative value it swaps the input.here with Math.random i will get numbers between 0 to 1 and substracting .5 will give me mostly negative value
+        shuffledAnswers.current.sort(() => Math.random - 0.5) //if sort function returns negative value it swaps the input.here with Math.random i will get numbers between 0 to 1 and substracting 0.5 will give me mostly negative value so it would swap teh input
     }
 
     return <ul id="answers">
